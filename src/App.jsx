@@ -268,13 +268,13 @@ export default function App() {
       {/* Header */}
       <div style={{ position: "relative", zIndex: 1, borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "18px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 34, height: 34, background: "#ff5a1f", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, fontSize: 17, color: "#09090b" }}>W</div>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAIAAAC1JZyVAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAEAklEQVR4nO1Vz2tcVRT+zr33zZtfTmaKSiwRmU4gkyw06kJx0X9AitIk6kKkDeJCaEsp1pQuuikpbbU2CuqiaBUE0U1BGi0IIrgRbSZJU2iwVmMaKUkrmTcv837f42LyJmOSNhUFF+ZbPO7iO+c733fn3gNsYhP/EegfEzYIVrScQhDkmmRiQwJBxgRJEGvLaYkhIhGHEa0QmkdBWCFgHQIhPitaThF/GA+mjMGOzPaCujdBM67+4Lp77oYDaAKIoBnlrDnYkX4yb7RJvuJE788439xyGtFE0EyPtSVf6jCfyKmUwKQdvTPj/rDoEWlmkACIqO+B9Eh3tj1JiDSYIAAS7854Q9OWp7Wv+dWHsifKmYxkaI4JdOQn58S1WsQINB/uzB0ppQ2poRkMCPK0fG3afm+mppmJgK0p4+r2+5IU2gEbRCBoBsCpVOLp76uj8/bhzvzRrlQYRL6GBEAINUzJyjB6v/tjouq93VPYU0wGfhAyCQCEQCOr2IXs/PbW724giDDnBP2VxTqLpJQgJpAAUgl18LI1Or90qJQ/2pV0/TBiGPGPTQgIqV4cr05UvdM9hT3FhOMFDFIEQWBGSsFmueNidc4NCBCaIYjOz9efq1gRkYKIWJumHJpeOnmtNlTKDXelXD8SWB4M3Rg5JXdNWp/MLb3VXdhXTDhepOJ5iYCEgAexs2J9fdMRRLp5BxQhZOy4P/35ozlTYehK/fjP1qFSfricdP1IxjQNCLAy1K7J2sfX7ZGewt6i2dBYJjCkhAfRd9G6cLPeSIvWq6aIQubnt2ZLaTV8dfFgqe14V9r3I8RXoVGUoeTuydpHc/bpni37iqbjhTL2oZmUgEfYOVa7sFA3iALmeMb/er80E8BDpfyxcqruRworGgJsKGP3lHV21j7VXdi/Lel4YasPJcgj9I1ZXy04TR/LmVtlNEMRS6Lf3MANOQFicOyDDSUHp6yzs/abPas1IkAJ4RP1jdXWaqx2E3sizfxMe+az3nuE1qFmSTCUGpyqfThrnypv2V8yHS9qviuaoQR8kn2V6pfz9bUa68sgnohn2zOfPpJTCIWUr1xaOjNbe6NcOFBKul7YfFo0WJIISPSPVUcX1tdY3bQmQoYiOndj6YUJyyLj5Uv2mdnayXL+wLak44WitVckQqKBSkOD1tW4rZu4e9Asimnj17p/rKvt9VLS9SOxMleQggISA5Xq+dv06q5kEE95b1uq8lQhjEJPQxHAiMCmkCFhoFL9Yt5p0O5U8Z1lQmZFNF51+ytVn2QmQaYgU1I6IesQ/ePW3Whs7KZJYuDhXGpv0Xw8azDjx1o48otz2XYlIdpA4u9gZe8RNYtrWWX/HloX8/o7eBOb+J/gT6UU1rPEw5AdAAAAAElFTkSuQmCC" alt="Whop" style={{ width: 34, height: 34, borderRadius: 9 }} />
           <div>
             <div style={{ fontWeight: 700, fontSize: 15, color: "#fff", letterSpacing: -0.3 }}>Product Feature Proposals</div>
-            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#555", letterSpacing: 0.4, marginTop: 1 }}>For Whop \u00B7 By Angad Bhatia</div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#555", letterSpacing: 0.4, marginTop: 1 }}>For Whop · By Angad Bhatia</div>
           </div>
         </div>
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#444", letterSpacing: 0.5, textTransform: "uppercase" }}>Draft \u00B7 April 2026</div>
+        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#444", letterSpacing: 0.5, textTransform: "uppercase" }}>April 2026</div>
       </div>
 
       {/* Hero */}
@@ -288,7 +288,7 @@ export default function App() {
         <div style={{ display: "flex", gap: 24, marginTop: 24, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#555" }}>
           <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>7</span><br />feature proposals</div>
           <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />competitors analyzed</div>
-          <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>2</span><br />platforms tested firsthand</div>
+          <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />platforms tested firsthand</div>
         </div>
       </div>
 
@@ -307,7 +307,7 @@ export default function App() {
       {/* Footer */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "20px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#3a3a3a", letterSpacing: 0.5, textTransform: "uppercase", position: "relative", zIndex: 1 }}>
         <span>Angad Bhatia</span>
-        <span>Built for <span style={{ color: "#ff5a1f" }}>Whop</span> \u00B7 Sourced from Skool, Circle, Kajabi</span>
+        <span>Built for <span style={{ color: "#ff5a1f" }}>Whop</span> · Sourced from Skool, Circle, Kajabi</span>
       </div>
     </div>
   );
