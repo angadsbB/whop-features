@@ -3,28 +3,6 @@ import { useState } from "react";
 const features = [
   {
     id: 1,
-    tag: "ENGAGEMENT",
-    title: "Gamification Layer",
-    subtitle: "Points, levels, leaderboards, and content gating.",
-    problem:
-      "Most Whop creators funnel their members to Discord for actual community interaction. Whop handles payments and access, but the daily engagement happens offplatform. This is a retention risk: if a competitor undercuts on payment processing, creators have no engagement layer keeping them on Whop. As one Reddit user put it, 'Whether Whop\u2019s community stays active depends almost entirely on how much the creator is feeding it.'",
-    competitor: "Skool",
-    competitorDetail:
-      "Members earn points for posting and getting likes. They level up publicly (Levels 1 through 9) and appear on weekly and all-time leaderboards. Creators can gate chat access behind Level 2 and course content behind higher levels. This reduces spam automatically (new members can't post until they've participated) and creates behavioral incentive for daily engagement without the creator doing anything manually.",
-    proposal:
-      "Build a native points and leveling system. Members earn points for posting, commenting, completing courses, and referring others. Public leaderboards per community. Let creators gate premium content, channels, or features behind engagement levels. This gives members a reason to engage on Whop instead of Discord, and gives creators a retention mechanic that compounds over time without manual effort.",
-    impact:
-      "Increases daily active usage on Whop's native tools. Reduces Discord dependency. Creates switching costs that keep creators on the platform long term. Makes the AM's job easier because the platform is doing behavioral work automatically.",
-    sources: "Skool Plugins, Reddit r/onlinecourses comparison thread, multiple Skool vs Whop reviews",
-    metrics: [
-      { label: "Points system", whop: "Not available", comp: "Skool: Native" },
-      { label: "Public leaderboards", whop: "Not available", comp: "Skool: Weekly + all-time" },
-      { label: "Level-gated content", whop: "Not available", comp: "Skool: Plugin (free)" },
-      { label: "Auto spam reduction", whop: "Manual moderation", comp: "Skool: Level-based gating" },
-    ],
-  },
-  {
-    id: 2,
     tag: "DASHBOARD",
     title: "Creator Health Metrics",
     subtitle: "Engagement, retention, and conversion on the main dashboard.",
@@ -44,31 +22,32 @@ const features = [
       { label: "Conversion rate", whop: "Not tracked", comp: "Skool: Default view" },
       { label: "Community benchmark", whop: "Not available", comp: "Circle: Activity Scores" },
     ],
-  },
+  },,
   {
-    id: 3,
-    tag: "GROWTH",
-    title: "Traffic Source Attribution",
-    subtitle: "Where are your visitors actually coming from?",
+    id: 2,
+    tag: "ANALYTICS",
+    title: "Member-Level Activity Tracking",
+    subtitle: "See which individual members are drifting before they leave.",
     problem:
-      "When a creator posts content on TikTok, runs ads on Meta, or gets mentioned in a YouTube video, they have no way to see inside Whop which channel drove the traffic. The dashboard tracks revenue endpoints but not acquisition sources. Creators who are spending money or time on marketing are flying blind on what's actually working.",
-    competitor: "Skool",
+      "Whop's Users table shows member status, email, product, total spend, and cancel reason. But there's no visibility into individual engagement patterns: when they last logged in, how often they participate, or whether their activity is trending up or down.",
+    competitor: "Skool + Circle",
     competitorDetail:
-      "Skool's dashboard includes a 'Where your about page visitors come from' section that breaks down traffic by source: organic search, social media, direct, referral. Skool also offers Meta Pixel tracking and Google Ads tracking as Pro plugins for paid ad attribution.",
+      "Skool shows a daily visual activity chart on every member's profile, covering the past year. Circle tracks who's active and who's gone quiet, letting admins filter their member list by engagement level.",
     proposal:
-      "Add a native traffic source breakdown to the analytics dashboard. Show where storefront visitors are coming from: organic, social, direct, referral, and paid. For creators running ads, offer native Meta Pixel and Google Ads tracking integration so they can measure ROAS without third-party setup. Whop already has Zapier integration with Facebook Conversions, but building this natively would make it accessible to non-technical creators.",
+      "Add a member health view: last login date, posts and comments in the last 30 days, activity trend (up, down, flat), and a color-coded health indicator. Let creators sort and filter their member list by engagement level. This gives AMs a concrete list of 'these 15 members need a check-in this week' instead of guessing.",
     impact:
-      "Creators double down on what works. AMs can advise creators on growth strategy with real data instead of guessing. Reduces reliance on external analytics tools.",
-    sources: "Skool dashboard (firsthand), Skool Pro plugins list, Whop Zapier integration page",
+      "Enables proactive retention at the individual level. Makes the AM role data-driven instead of reactive. Pairs naturally with re-engagement workflows for automated follow-up.",
+    sources: "Skool member profiles, Circle engagement filtering, Whop Users table (firsthand as seller)",
     metrics: [
-      { label: "Traffic sources", whop: "Not tracked", comp: "Skool: Default view" },
-      { label: "Meta Pixel native", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
-      { label: "Google Ads tracking", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
-      { label: "Referral tracking", whop: "Affiliate system", comp: "Skool: Built into sources" },
+      { label: "Last login visible", whop: "Not surfaced", comp: "Skool: Profile view" },
+      { label: "Activity history chart", whop: "Not available", comp: "Skool: Daily (1 year)" },
+      { label: "Engagement filtering", whop: "Not available", comp: "Circle: Native" },
+      { label: "Health indicator", whop: "Not available", comp: "Circle: Activity Scores" },
     ],
   },
+],
   {
-    id: 4,
+    id: 3,
     tag: "RETENTION",
     title: "Cancellation Flow Intervention",
     subtitle: "Intercept churn at the moment it happens.",
@@ -88,9 +67,9 @@ const features = [
       { label: "Discount offer at cancel", whop: "Not available", comp: "Kajabi: Native" },
       { label: "Cancel reason collection", whop: "Available (Users table)", comp: "Available" },
     ],
-  },
+  },,
   {
-    id: 5,
+    id: 4,
     tag: "AUTOMATION",
     title: "Native Re-engagement Workflows",
     subtitle: "Automated nudges before members drift away.",
@@ -110,7 +89,29 @@ const features = [
       { label: "Conditional sequences", whop: "Via Zapier only", comp: "Circle: No-code native" },
       { label: "Weekly digest emails", whop: "Not available", comp: "Circle: Automated" },
     ],
-  },
+  },,
+  {
+    id: 5,
+    tag: "GROWTH",
+    title: "Traffic Source Attribution",
+    subtitle: "Where are your visitors actually coming from?",
+    problem:
+      "When a creator posts content on TikTok, runs ads on Meta, or gets mentioned in a YouTube video, they have no way to see inside Whop which channel drove the traffic. The dashboard tracks revenue endpoints but not acquisition sources. Creators who are spending money or time on marketing are flying blind on what's actually working.",
+    competitor: "Skool",
+    competitorDetail:
+      "Skool's dashboard includes a 'Where your about page visitors come from' section that breaks down traffic by source: organic search, social media, direct, referral. Skool also offers Meta Pixel tracking and Google Ads tracking as Pro plugins for paid ad attribution.",
+    proposal:
+      "Add a native traffic source breakdown to the analytics dashboard. Show where storefront visitors are coming from: organic, social, direct, referral, and paid. For creators running ads, offer native Meta Pixel and Google Ads tracking integration so they can measure ROAS without third-party setup. Whop already has Zapier integration with Facebook Conversions, but building this natively would make it accessible to non-technical creators.",
+    impact:
+      "Creators double down on what works. AMs can advise creators on growth strategy with real data instead of guessing. Reduces reliance on external analytics tools.",
+    sources: "Skool dashboard (firsthand), Skool Pro plugins list, Whop Zapier integration page",
+    metrics: [
+      { label: "Traffic sources", whop: "Not tracked", comp: "Skool: Default view" },
+      { label: "Meta Pixel native", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
+      { label: "Google Ads tracking", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
+      { label: "Referral tracking", whop: "Affiliate system", comp: "Skool: Built into sources" },
+    ],
+  },,
   {
     id: 6,
     tag: "AI",
@@ -132,27 +133,27 @@ const features = [
       { label: "Shared AI inbox", whop: "Not available", comp: "Circle: Native" },
       { label: "Learns from new posts", whop: "Not available", comp: "Circle: Continuous" },
     ],
-  },
+  },,
   {
     id: 7,
-    tag: "ANALYTICS",
-    title: "Member-Level Activity Tracking",
-    subtitle: "See which individual members are drifting before they leave.",
+    tag: "ENGAGEMENT",
+    title: "Gamification Layer",
+    subtitle: "Points, levels, leaderboards, and content gating.",
     problem:
-      "Whop's Users table shows member status, email, product, total spend, and cancel reason. But there's no visibility into individual engagement patterns: when they last logged in, how often they participate, or whether their activity is trending up or down.",
-    competitor: "Skool + Circle",
+      "Most Whop creators funnel their members to Discord for actual community interaction. Whop handles payments and access, but the daily engagement happens offplatform. This is a retention risk: if a competitor undercuts on payment processing, creators have no engagement layer keeping them on Whop. As one Reddit user put it, 'Whether Whop\u2019s community stays active depends almost entirely on how much the creator is feeding it.'",
+    competitor: "Skool",
     competitorDetail:
-      "Skool shows a daily visual activity chart on every member's profile, covering the past year. Circle tracks who's active and who's gone quiet, letting admins filter their member list by engagement level.",
+      "Members earn points for posting and getting likes. They level up publicly (Levels 1 through 9) and appear on weekly and all-time leaderboards. Creators can gate chat access behind Level 2 and course content behind higher levels. This reduces spam automatically (new members can't post until they've participated) and creates behavioral incentive for daily engagement without the creator doing anything manually.",
     proposal:
-      "Add a member health view: last login date, posts and comments in the last 30 days, activity trend (up, down, flat), and a color-coded health indicator. Let creators sort and filter their member list by engagement level. This gives AMs a concrete list of 'these 15 members need a check-in this week' instead of guessing.",
+      "Build a native points and leveling system. Members earn points for posting, commenting, completing courses, and referring others. Public leaderboards per community. Let creators gate premium content, channels, or features behind engagement levels. This gives members a reason to engage on Whop instead of Discord, and gives creators a retention mechanic that compounds over time without manual effort.",
     impact:
-      "Enables proactive retention at the individual level. Makes the AM role data-driven instead of reactive. Pairs naturally with re-engagement workflows for automated follow-up.",
-    sources: "Skool member profiles, Circle engagement filtering, Whop Users table (firsthand as seller)",
+      "Increases daily active usage on Whop's native tools. Reduces Discord dependency. Creates switching costs that keep creators on the platform long term. Makes the AM's job easier because the platform is doing behavioral work automatically.",
+    sources: "Skool Plugins, Reddit r/onlinecourses comparison thread, multiple Skool vs Whop reviews",
     metrics: [
-      { label: "Last login visible", whop: "Not surfaced", comp: "Skool: Profile view" },
-      { label: "Activity history chart", whop: "Not available", comp: "Skool: Daily (1 year)" },
-      { label: "Engagement filtering", whop: "Not available", comp: "Circle: Native" },
-      { label: "Health indicator", whop: "Not available", comp: "Circle: Activity Scores" },
+      { label: "Points system", whop: "Not available", comp: "Skool: Native" },
+      { label: "Public leaderboards", whop: "Not available", comp: "Skool: Weekly + all-time" },
+      { label: "Level-gated content", whop: "Not available", comp: "Skool: Plugin (free)" },
+      { label: "Auto spam reduction", whop: "Manual moderation", comp: "Skool: Level-based gating" },
     ],
   },
 ];
