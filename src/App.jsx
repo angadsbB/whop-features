@@ -45,7 +45,6 @@ const features = [
       { label: "Health indicator", whop: "Not available", comp: "Circle: Activity Scores" },
     ],
   },
-],
   {
     id: 3,
     tag: "RETENTION",
