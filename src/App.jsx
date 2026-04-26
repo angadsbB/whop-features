@@ -22,7 +22,7 @@ const features = [
       { label: "Conversion rate", whop: "Not tracked", comp: "Skool: Default view" },
       { label: "Community benchmark", whop: "Not available", comp: "Circle: Activity Scores" },
     ],
-  },,
+  },
   {
     id: 2,
     tag: "ANALYTICS",
@@ -66,7 +66,7 @@ const features = [
       { label: "Discount offer at cancel", whop: "Not available", comp: "Kajabi: Native" },
       { label: "Cancel reason collection", whop: "Available (Users table)", comp: "Available" },
     ],
-  },,
+  },
   {
     id: 4,
     tag: "AUTOMATION",
@@ -88,7 +88,7 @@ const features = [
       { label: "Conditional sequences", whop: "Via Zapier only", comp: "Circle: No-code native" },
       { label: "Weekly digest emails", whop: "Not available", comp: "Circle: Automated" },
     ],
-  },,
+  },
   {
     id: 5,
     tag: "GROWTH",
@@ -110,7 +110,7 @@ const features = [
       { label: "Google Ads tracking", whop: "Via Zapier only", comp: "Skool: Pro plugin" },
       { label: "Referral tracking", whop: "Affiliate system", comp: "Skool: Built into sources" },
     ],
-  },,
+  },
   {
     id: 6,
     tag: "AI",
@@ -132,7 +132,7 @@ const features = [
       { label: "Shared AI inbox", whop: "Not available", comp: "Circle: Native" },
       { label: "Learns from new posts", whop: "Not available", comp: "Circle: Continuous" },
     ],
-  },,
+  },
   {
     id: 7,
     tag: "ENGAGEMENT",
