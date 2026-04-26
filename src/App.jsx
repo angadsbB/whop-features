@@ -200,11 +200,11 @@ function FeatureNav({ features, activeId, onSelect }) {
 function CompTable({ metrics }) {
   return (
     <div style={{ background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, overflow: "hidden" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", padding: "10px 16px", background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: 1, color: "#555", textTransform: "uppercase" }}>
+      <div className="comp-grid" style={{ padding: "10px 16px", background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", fontFamily: "'IBM Plex Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: 1, color: "#555", textTransform: "uppercase" }}>
         <span>Feature</span><span>Whop</span><span>Competitor</span>
       </div>
       {metrics.map((m, i) => (
-        <div key={i} style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", padding: "10px 16px", borderBottom: i < metrics.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", fontSize: 12 }}>
+        <div key={i} className="comp-grid" style={{ padding: "10px 16px", borderBottom: i < metrics.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none", fontSize: 12 }}>
           <span style={{ color: "#bbb", fontWeight: 500 }}>{m.label}</span>
           <span style={{ color: m.whop.includes("Not") || m.whop.includes("only") ? "#f87171" : m.whop.includes("opt-in") ? "#fbbf24" : "#4ade80", fontSize: 11, fontWeight: 500 }}>{m.whop}</span>
           <span style={{ color: "#4ade80", fontSize: 11, fontWeight: 500 }}>{m.comp}</span>
@@ -261,14 +261,34 @@ export default function App() {
         ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255,90,31,0.25); border-radius: 4px; }
+        .main-grid { display: grid; grid-template-columns: 360px 1fr; min-height: 70vh; position: relative; z-index: 1; }
+        .nav-col { border-right: 1px solid rgba(255,255,255,0.06); }
+        .detail-col { padding: 28px 36px; overflow-y: auto; max-height: calc(100vh - 200px); }
+        .hero-title { font-size: 42px; }
+        .header-bar { padding: 18px 32px; }
+        .hero-section { padding: 52px 32px 36px; }
+        .footer-bar { padding: 20px 32px; flex-direction: row; }
+        .stats-row { display: flex; gap: 24px; }
+        .comp-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; }
+        @media (max-width: 768px) {
+          .main-grid { grid-template-columns: 1fr; min-height: auto; }
+          .nav-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+          .detail-col { padding: 20px 16px; max-height: none; }
+          .hero-title { font-size: 28px; }
+          .header-bar { padding: 14px 16px; }
+          .hero-section { padding: 32px 16px 24px; }
+          .footer-bar { padding: 16px; flex-direction: column; gap: 8px; align-items: flex-start; }
+          .stats-row { gap: 16px; }
+          .comp-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
       `}</style>
 
       <div style={{ position: "fixed", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none", zIndex: 0 }} />
 
       {/* Header */}
-      <div style={{ position: "relative", zIndex: 1, borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "18px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="header-bar" style={{ position: "relative", zIndex: 1, borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAIAAAC1JZyVAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAEAklEQVR4nO1Vz2tcVRT+zr33zZtfTmaKSiwRmU4gkyw06kJx0X9AitIk6kKkDeJCaEsp1pQuuikpbbU2CuqiaBUE0U1BGi0IIrgRbSZJU2iwVmMaKUkrmTcv837f42LyJmOSNhUFF+ZbPO7iO+c733fn3gNsYhP/EegfEzYIVrScQhDkmmRiQwJBxgRJEGvLaYkhIhGHEa0QmkdBWCFgHQIhPitaThF/GA+mjMGOzPaCujdBM67+4Lp77oYDaAKIoBnlrDnYkX4yb7RJvuJE788439xyGtFE0EyPtSVf6jCfyKmUwKQdvTPj/rDoEWlmkACIqO+B9Eh3tj1JiDSYIAAS7854Q9OWp7Wv+dWHsifKmYxkaI4JdOQn58S1WsQINB/uzB0ppQ2poRkMCPK0fG3afm+mppmJgK0p4+r2+5IU2gEbRCBoBsCpVOLp76uj8/bhzvzRrlQYRL6GBEAINUzJyjB6v/tjouq93VPYU0wGfhAyCQCEQCOr2IXs/PbW724giDDnBP2VxTqLpJQgJpAAUgl18LI1Or90qJQ/2pV0/TBiGPGPTQgIqV4cr05UvdM9hT3FhOMFDFIEQWBGSsFmueNidc4NCBCaIYjOz9efq1gRkYKIWJumHJpeOnmtNlTKDXelXD8SWB4M3Rg5JXdNWp/MLb3VXdhXTDhepOJ5iYCEgAexs2J9fdMRRLp5BxQhZOy4P/35ozlTYehK/fjP1qFSfricdP1IxjQNCLAy1K7J2sfX7ZGewt6i2dBYJjCkhAfRd9G6cLPeSIvWq6aIQubnt2ZLaTV8dfFgqe14V9r3I8RXoVGUoeTuydpHc/bpni37iqbjhTL2oZmUgEfYOVa7sFA3iALmeMb/er80E8BDpfyxcqruRworGgJsKGP3lHV21j7VXdi/Lel4YasPJcgj9I1ZXy04TR/LmVtlNEMRS6Lf3MANOQFicOyDDSUHp6yzs/abPas1IkAJ4RP1jdXWaqx2E3sizfxMe+az3nuE1qFmSTCUGpyqfThrnypv2V8yHS9qviuaoQR8kn2V6pfz9bUa68sgnohn2zOfPpJTCIWUr1xaOjNbe6NcOFBKul7YfFo0WJIISPSPVUcX1tdY3bQmQoYiOndj6YUJyyLj5Uv2mdnayXL+wLak44WitVckQqKBSkOD1tW4rZu4e9Asimnj17p/rKvt9VLS9SOxMleQggISA5Xq+dv06q5kEE95b1uq8lQhjEJPQxHAiMCmkCFhoFL9Yt5p0O5U8Z1lQmZFNF51+ytVn2QmQaYgU1I6IesQ/ePW3Whs7KZJYuDhXGpv0Xw8azDjx1o48otz2XYlIdpA4u9gZe8RNYtrWWX/HloX8/o7eBOb+J/gT6UU1rPEw5AdAAAAAElFTkSuQmCC" alt="Whop" style={{ width: 34, height: 34, borderRadius: 9 }} />
+          <img src="data:image/png;base64,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" alt="Whop" style={{ width: 34, height: 34, borderRadius: 9 }} />
           <div>
             <div style={{ fontWeight: 700, fontSize: 15, color: "#fff", letterSpacing: -0.3 }}>Product Feature Proposals</div>
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#555", letterSpacing: 0.4, marginTop: 1 }}>For Whop · By Angad Bhatia</div>
@@ -278,14 +298,14 @@ export default function App() {
       </div>
 
       {/* Hero */}
-      <div style={{ position: "relative", zIndex: 1, padding: "52px 32px 36px", maxWidth: 880, background: "radial-gradient(ellipse at top left, rgba(255,90,31,0.06) 0%, transparent 50%)" }}>
-        <h1 style={{ fontSize: 42, fontWeight: 900, color: "#fff", letterSpacing: -1.8, lineHeight: 1.08, marginBottom: 16 }}>
+      <div className="hero-section" style={{ position: "relative", zIndex: 1, maxWidth: 880, background: "radial-gradient(ellipse at top left, rgba(255,90,31,0.06) 0%, transparent 50%)" }}>
+        <h1 className="hero-title" style={{ fontWeight: 900, color: "#fff", letterSpacing: -1.8, lineHeight: 1.08, marginBottom: 16 }}>
           7 features that would make<br /><span style={{ color: "#ff5a1f" }}>Whop creators</span> harder to leave.
         </h1>
         <p style={{ fontSize: 16, color: "#888", lineHeight: 1.6, maxWidth: 660 }}>
           I've been a paying member of communities on Whop and recently signed up for Skool and Circle to compare firsthand. These are real gaps I found, sourced from competitor platforms, creator feedback, and my own experience on both sides of the platform.
         </p>
-        <div style={{ display: "flex", gap: 24, marginTop: 24, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#555" }}>
+        <div className="stats-row" style={{ marginTop: 24, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#555" }}>
           <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>7</span><br />feature proposals</div>
           <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />competitors analyzed</div>
           <div><span style={{ color: "#ff5a1f", fontWeight: 700, fontSize: 20 }}>3</span><br />platforms tested firsthand</div>
@@ -295,17 +315,17 @@ export default function App() {
       <div style={{ height: 1, background: "linear-gradient(90deg, rgba(255,90,31,0.3) 0%, rgba(255,255,255,0.06) 50%, transparent 100%)" }} />
 
       {/* Main */}
-      <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "360px 1fr", minHeight: "70vh" }}>
-        <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="main-grid">
+        <div className="nav-col">
           <FeatureNav features={features} activeId={activeId} onSelect={setActiveId} />
         </div>
-        <div style={{ padding: "28px 36px", overflowY: "auto", maxHeight: "calc(100vh - 200px)" }}>
+        <div className="detail-col">
           <FeatureDetail feature={activeFeature} />
         </div>
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "20px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#3a3a3a", letterSpacing: 0.5, textTransform: "uppercase", position: "relative", zIndex: 1 }}>
+      <div className="footer-bar" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#3a3a3a", letterSpacing: 0.5, textTransform: "uppercase", position: "relative", zIndex: 1 }}>
         <span>Angad Bhatia</span>
         <span>Built for <span style={{ color: "#ff5a1f" }}>Whop</span> · Sourced from Skool, Circle, Kajabi</span>
       </div>
